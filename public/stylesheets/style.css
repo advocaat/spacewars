@@ -6,3 +6,47 @@ body {
 a {
   color: #00B7FF;
 }
+#dash{
+  position: absolute;
+  background-color: khaki;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+
+}
+canvas {
+  background-color: cornflowerblue;
+}
+
+#mine {
+  position: absolute;
+  left: -700px;
+}
+
+#yours {
+  background-color: aliceblue;
+  margin-top: 14px;
+  margin-left: 26px;
+}
+#myShips{
+  margin-left: 26px;
+
+}
+
+#timer{
+  font-size: 32px;
+  font-family: "Agency FB";
+  position: absolute;
+  left: 650px;
+  top: -10px;
+
+}
+#messageBox{
+  font-size: 38px;
+  font-family: "Agency FB";
+  position: absolute;
+  top: -40px;
+  left: 750px;
+}
