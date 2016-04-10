@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <title>hoi bra</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
-	<link href="stylesheets/style.css" rel="stylesheet" type="text/css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
     <style>
 
     </style>
@@ -17,17 +24,26 @@
     <canvas id="mine"></canvas>
 </div>
 <div id="dash">
-<canvas id="yours"></canvas>
-	<div id="messageBox"></div>
+
+    <canvas id="yours"></canvas>
+    <div id="messageBox"></div>
     <div id="moves"></div>
-	<div id="timer"></div>
-	<div id="ships">
-		<canvas width="800" height = "150" id="myShips">Your browser does not support canvas</canvas>
-	</div>
+    <div id="timer"></div>
+    <div id="ships">
+        <canvas width="900" height="150" id="myShips">Your browser does not support canvas</canvas>
+    </div>
+    <div id="buttonPannle">
+        <ul id="buttonList">
+            <li><button class="btn btn-primary">SHOP</button></li>
+            <li><button class="btn btn-success">Stats</button></li>
+            <li><button class="btn btn-warning">Leader Boards</button></li>
+            <li><button class="btn btn-danger">Donate</button></li>
+        </ul>
+    </div>
+
 </div>
 
 </body>
 <script src="javascripts/gameScript.js"></script>
-
 
 </html>
