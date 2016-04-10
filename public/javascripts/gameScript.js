@@ -167,7 +167,7 @@
             enemyCubes.forEach(function (cube) {
                 cube.position.z = lowerZ(cube);
             });
-            //castemz();
+            castemz();
         }
 
         img.src = get2d();
@@ -297,26 +297,30 @@
 
 
     function switchPieces(pos, other) {
-        var done = false;
+        var done = false
+        var notSecondThrough = true;
         pieces.forEach(function (piece) {
             if (done) {
                 return false;
             }
             if (piece.col == pos.x && piece.row == pos.y) {
                 pieces.forEach(function (otherPiece) {
-                    if (otherPiece.col == other.x && otherPiece.row == other.y) {
+                    if (otherPiece.col == other.x && otherPiece.row == other.y && notSecondThrough) {
                         otherPiece.col = pos.x;
                         otherPiece.row = pos.y;
                         piece.col = other.x;
                         piece.row = other.y;
                         console.log("Moved " + piece.col + " - " + piece.row + " to " + otherPiece.col + " - " + otherPiece.row);
+                        notSecondThrough = false;
                         numMoves++;
                         done = true;
+
                     }
                 });
             }
         });
     }
+
 
     function createBox(colee, ex, wi) {
         var geometry = new THREE.BoxGeometry(1, 1, 1);
