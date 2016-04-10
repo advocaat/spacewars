@@ -6,18 +6,18 @@
     var ctx = my_canvas.getContext('webgl');
     var renderer = new THREE.WebGLRenderer({canvas: my_canvas, preserveDrawingBuffer: true});
     var img = new Image();
-    my_canvas.width = 600;
-    my_canvas.height = 500;
+    my_canvas.width = 900;
+    my_canvas.height = 620;
     var canvee = document.getElementById('yours');
-    canvee.width = 600;
-    canvee.height = 500;
+    canvee.width = my_canvas.width;
+    canvee.height = my_canvas.height;
     var myPos = {x: 1, y: 1};
     var context = canvee.getContext("2d");
     var rows = 3;
     var cols = 3;
     var selected = false;
-    var pieceWidth = 600 / cols;
-    var pieceHeight = 500 / rows;
+    var pieceWidth = my_canvas.width / cols;
+    var pieceHeight = my_canvas.height / rows;
     var myimg
     var imgData;
     var winPieces = [];
@@ -167,7 +167,7 @@
             enemyCubes.forEach(function (cube) {
                 cube.position.z = lowerZ(cube);
             });
-            castemz();
+            //castemz();
         }
 
         img.src = get2d();
