@@ -8,9 +8,17 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/gameOver', function (req, res, next) {
-    var cuntsnatcher = JSON.stringify(req.body.time);
-    console.log("poop" + cuntsnatcher);
-    res.render('gameOver',{poof: cuntsnatcher});
+    var gameTime = JSON.stringify(req.body.time);
+    var gameMoves = JSON.stringify(req.body.moves);
+    res.render('gameOver',{gameTime: gameTime, gameMoves: gameMoves});
 
 });
+
+router.post('/gameWin', function (req, res, next) {
+    var gameTime = JSON.stringify(req.body.time);
+    var gameMoves = JSON.stringify(req.body.moves);
+    res.render('gameWin',{gameTime: gameTime, gameMoves: gameMoves});
+
+});
+
 module.exports = router;

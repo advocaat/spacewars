@@ -194,11 +194,13 @@
     function drawGraph() {
         function displayTime() {
             var timeElement = document.getElementById("timer");
+            var movesElement = document.getElementById("moves");
             //var myTime = new Date().getSeconds();
             beginTimer();
             setInterval(function () {
-                timeElement.innerHTML = "<p>Moves: " + numMoves + "<br/>" + (( new Date().getTime() - startTime.getTime()) / 1000.).toFixed(2).toString() + "</p>";
-                return myTime;
+                timeElement.innerHTML = "<p>"+(( new Date().getTime() - startTime.getTime()) / 1000.).toFixed(2).toString() + "</p>";
+                movesElement.innerHTML = "<p> Moves:"  + numMoves + "</p><br/>"
+                return myTime; 
             });
         }
 
@@ -440,7 +442,15 @@
 
         if (JSON.stringify(pieces) == JSON.stringify(winPieces)) {
             console.log("Winner Winner Chicken Dinner");
-            alert("winner");
+            document.getElementById("messageBox").innerHTML = "<h2>You Win</h3>";
+            var gameTime = document.getElementById('timer').childNodes[0].innerHTML;
+            setTimeout(function () {
+                var myData = [];
+                myData["moves"] = numMoves;
+                myData["time"] = gameTime;
+                post(myData, "/gameWin");
+
+            }, 2000);
         }
     }
 

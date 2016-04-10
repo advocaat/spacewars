@@ -11,5 +11,9 @@ var GameStateSchema = new Schema({
     enemyPosition: [PositionSchema],
     playerCurrency: Number,
     playerMoves: Number,
-    playerTime: Date
+    playerTime: Number
 });
+
+var GameState = mongoose.model('GameState', GameStateSchema, "GameStates");
+
+module.exports = GameState;
