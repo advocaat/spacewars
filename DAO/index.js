@@ -1,6 +1,7 @@
 var GameState = require('../models/GameState.js');
 var mongoose = require('mongoose');
-monggoose.connect('mongoose.connect("mongodb://localhost/SpaceBase");')
+
+mongoose.connect("mongodb://localhost/SpaceBase");
 functions = {};
 
 functions.saveGameState =

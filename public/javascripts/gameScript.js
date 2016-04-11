@@ -1,3 +1,5 @@
+///TODO: moves are not being added to the winscreen
+
 (function () {
     var player1;
     var player2;
@@ -22,6 +24,8 @@
     var imgData;
     var winPieces = [];
     var numMoves = 0;
+    var myZ = 50.00;
+    var enemyCubes = [];
     var pieces = [
         {col: 0, row: 0},
         {col: 1, row: 0},
@@ -47,14 +51,15 @@
     var rand = function () {
         return Math.floor(Math.random() * 15)
     };
-    var myZ = 50.00;
-    var enemyCubes = [];
+
 
 
     setInterval(function () {
         var randSwitch = Math.floor(Math.random() * 2);
         console.log("num " + randSwitch);
-        cube = createBox(getRandomColor(), 50, 1.726);
+        var color = getRandomColor()
+        cube = createBox(color, 50, 1.726);
+        cube.color = color;
         if (randSwitch === 0) {
             cube.position.x = rand();
         } else {
@@ -200,7 +205,7 @@
             setInterval(function () {
                 timeElement.innerHTML = "<p>"+(( new Date().getTime() - startTime.getTime()) / 1000.).toFixed(2).toString() + "</p>";
                 movesElement.innerHTML = "<p> Moves:"  + numMoves + "</p><br/>"
-                return myTime; 
+                return myTime;
             });
         }
 
@@ -495,4 +500,36 @@
             form.submit();
         }
     }
+var socket;
+$(document).ready(function(){
+    socket = io('http://localhost:3000');
+});
+    function gameSave(){
+
+        var  obj = {}
+
+        myPos.color = null;
+       obj.playerPosition = myPos;
+       obj.enemyPositions = [];
+        enemyCubes.forEach(function(cube){
+           var thisCube = {x: cube.position.x, y: cube.position.y, z: cube.position.z, color: cube.color}
+            //console.log("COLOR: "+ JSON.stringify(cube));
+            obj.enemyPositions.push(thisCube);
+       });
+        obj.playerCurrency = 25;
+        obj.playerMoves = numMoves;
+        obj.playerTime = document.getElementById('timer').childNodes[0].innerHTML;
+
+
+
+        console.log("Saving Game State");
+        socket.emit("gamesave", obj);
+    }
+
+
+    $(window).blur( function(e){
+        console.log(e);
+       gameSave();
+        console.log("Saved Game State");
+    });
 })();

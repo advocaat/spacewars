@@ -3,7 +3,9 @@ var Schema = mongoose.Schema;
 
 var PositionSchema= new Schema({
     x : Number,
-    y: Number
+    y: Number,
+    z: Number,
+    color: String
 })
 
 var GameStateSchema = new Schema({
@@ -14,6 +16,7 @@ var GameStateSchema = new Schema({
     playerTime: Number
 });
 
+var collectionName = "local";
 var GameState = mongoose.model('GameState', GameStateSchema, "GameStates");
 
 module.exports = GameState;

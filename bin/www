@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('spacewars:server');
 var http = require('http');
-
+var DAO = require('../DAO');
 /**
  * Get port from environment and store in Express.
  */
@@ -24,7 +24,17 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+var io = require('socket.io')(server);
 
+io.on('connection', function (socket) {
+  socket.on("gamesave", function (obj) {
+    console.log("SAVING GAME ");
+    DAO.saveGameState(obj.playerPosition, obj.enemyPositions, obj.playerCurrency, obj.playerMoves, obj.playerTime);
+
+  });
+
+
+});
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
