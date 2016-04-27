@@ -9,6 +9,7 @@ var PositionSchema= new Schema({
 })
 
 var GameStateSchema = new Schema({
+    playerName: String,
     playerPosition: PositionSchema,
     enemyPosition: [PositionSchema],
     playerCurrency: Number,
@@ -18,5 +19,4 @@ var GameStateSchema = new Schema({
 
 var collectionName = "local";
 var GameState = mongoose.model('GameState', GameStateSchema, "GameStates");
-
 module.exports = GameState;

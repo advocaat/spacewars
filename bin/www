@@ -29,9 +29,16 @@ var io = require('socket.io')(server);
 io.on('connection', function (socket) {
   socket.on("gamesave", function (obj) {
     console.log("SAVING GAME ");
-    DAO.saveGameState(obj.playerPosition, obj.enemyPositions, obj.playerCurrency, obj.playerMoves, obj.playerTime);
-
+    DAO.updateGameState(obj.playerName ,obj.playerPosition, obj.enemyPositions, obj.playerCurrency, obj.playerMoves, obj.playerTime);
   });
+  
+  socket.on("restart", function(playerName){
+    console.log("blarp");
+    DAO.getGameState(playerName, function(gameState){
+      socket.emit("savedGame", gameState);
+    });
+    
+  })
 
 
 });

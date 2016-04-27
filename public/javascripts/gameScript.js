@@ -48,6 +48,8 @@
 
     renderer.setSize(my_canvas.width, my_canvas.height);
     document.body.appendChild(renderer.domElement);
+
+
     var rand = function () {
         return Math.floor(Math.random() * 15)
     };
@@ -341,6 +343,19 @@
         return cube;
     }
 
+    
+    function recreateBox(enemy){
+        var geometry = new THREE.BoxGeometry(1,1,1);
+        var material = new  THREE.MeshBasicMaterial({color: enemy.color});
+        var cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+        cube.position.y = enemy.y;
+        cube.position.x = enemy.x;
+        cube.position.z = enemy.z;
+        return cube;
+    }
+
+
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
         return {
@@ -507,10 +522,10 @@ $(document).ready(function(){
     function gameSave(){
 
         var  obj = {}
-
+        obj.playerName = localStorage.getItem("username");
         myPos.color = null;
-       obj.playerPosition = myPos;
-       obj.enemyPositions = [];
+        obj.playerPosition = myPos;
+        obj.enemyPositions = [];
         enemyCubes.forEach(function(cube){
            var thisCube = {x: cube.position.x, y: cube.position.y, z: cube.position.z, color: cube.color}
             //console.log("COLOR: "+ JSON.stringify(cube));
@@ -532,4 +547,39 @@ $(document).ready(function(){
        gameSave();
         console.log("Saved Game State");
     });
+
+    $(window).focus(function(e){
+        console.log("Restarting Game");
+        socket.emit("restart", localStorage.getItem("username"));
+    });
+    
+    $(window).load(function(){
+        socket.on("savedGame", function(gameState){
+            console.log("restarting");
+            restartGame(gameState);
+        });
+    })
+    
+    function restartGame(gameState){
+
+        enemyCubes.forEach(function(cube){
+            scene.remove(cube);
+        });
+        enemyCubes = [];
+        console.log(JSON.stringify(gameState));
+        gameState.enemyPosition.forEach(function(enemy){
+            console.log("enemy create");
+            addSavedCube(recreateBox(enemy), gameState);
+            
+        });
+        
+    }
+    function addSavedCube(cube, gameState){
+        if (enemyCubes.length > gameState.enemyPosition.length) {
+            var gone = enemyCubes.shift(cube);
+            scene.remove(gone);
+        }
+        enemyCubes.push(cube);
+
+    }
 })();
