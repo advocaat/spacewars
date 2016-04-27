@@ -38,7 +38,6 @@ router.post('/register', function(req,res, next){
 
 router.post('/login', function(req, res, next){
     console.log("name "+ req.body.username + " password " + req.body.password);
-
     Dao.retreiveUsernameAndPassword(req.body.username, req.body.password, function(doc){
         user = doc;
         res.redirect('/');

@@ -25,6 +25,10 @@
     var winPieces = [];
     var numMoves = 0;
     var myZ = 50.00;
+    var gameTime;
+    var removedTime = 0;
+    var awayTime;
+    var returnTime;
     var enemyCubes = [];
     var pieces = [
         {col: 0, row: 0},
@@ -59,7 +63,7 @@
     setInterval(function () {
         var randSwitch = Math.floor(Math.random() * 2);
         console.log("num " + randSwitch);
-        var color = getRandomColor()
+        var color = getRandomColor();
         cube = createBox(color, 50, 1.726);
         cube.color = color;
         if (randSwitch === 0) {
@@ -163,7 +167,7 @@
 
     camera.position.z = 5;
     camera.position.y = 4;
-    camera.rotation.x = -25 * Math.PI / 180
+    camera.rotation.x = -25 * Math.PI / 180;
 
     var render = function () {
 
@@ -205,7 +209,7 @@
             //var myTime = new Date().getSeconds();
             beginTimer();
             setInterval(function () {
-                timeElement.innerHTML = "<p>"+(( new Date().getTime() - startTime.getTime()) / 1000.).toFixed(2).toString() + "</p>";
+                timeElement.innerHTML = "<p>"+((( new Date().getTime() - (startTime.getTime()+ removedTime))) / 1000.0) .toFixed(2).toString()+ "</p>";
                 movesElement.innerHTML = "<p> Moves:"  + numMoves + "</p><br/>"
                 return myTime;
             });
@@ -349,6 +353,7 @@
         var material = new  THREE.MeshBasicMaterial({color: enemy.color});
         var cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
+        cube.color = enemy.color;
         cube.position.y = enemy.y;
         cube.position.x = enemy.x;
         cube.position.z = enemy.z;
@@ -544,8 +549,9 @@ $(document).ready(function(){
 
     $(window).blur( function(e){
         console.log(e);
-       gameSave();
+        gameSave();
         console.log("Saved Game State");
+        awayTime = new Date().getTime();
     });
 
     $(window).focus(function(e){
@@ -556,12 +562,14 @@ $(document).ready(function(){
     $(window).load(function(){
         socket.on("savedGame", function(gameState){
             console.log("restarting");
+            removedTime += (new Date().getTime() - awayTime);
+            console.log("removed Time: "+ removedTime);
             restartGame(gameState);
+
         });
     })
     
     function restartGame(gameState){
-
         enemyCubes.forEach(function(cube){
             scene.remove(cube);
         });
@@ -569,9 +577,10 @@ $(document).ready(function(){
         console.log(JSON.stringify(gameState));
         gameState.enemyPosition.forEach(function(enemy){
             console.log("enemy create");
-            addSavedCube(recreateBox(enemy), gameState);
-            
+            var cubish = recreateBox(enemy);
+            addSavedCube(cubish, gameState);
         });
+        
         
     }
     function addSavedCube(cube, gameState){
@@ -580,6 +589,9 @@ $(document).ready(function(){
             scene.remove(gone);
         }
         enemyCubes.push(cube);
+    }
 
+    function calcGameTime(){
+        gameTime = ((( new Date().getTime() - (startTime.getTime()+ removedTime))) / 1000.0) .toFixed(2).toString()
     }
 })();
