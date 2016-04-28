@@ -3,7 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>hoi bra</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"
+              integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+              crossorigin="anonymous">
+    </script>
+
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
     <script src="javascripts/model.js"></script>
 </head>
@@ -14,6 +19,7 @@
 <a href="/">New Game</a>
 <div id="countdown"></div>
 <ul id="scores"></ul>
+<script src="javascripts/game/levelUp.js"></script>
 <script>
     var myTime = document.getElementById("myTime");
     var time = <%- gameTime %>;

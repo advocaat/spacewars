@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('spacewars:server');
 var http = require('http');
 var DAO = require('../DAO');
+var model = require('../model');
 /**
  * Get port from environment and store in Express.
  */
@@ -37,11 +38,13 @@ io.on('connection', function (socket) {
     DAO.getGameState(playerName, function(gameState){
       socket.emit("savedGame", gameState);
     });
-    
   })
-
-
+  socket.on("levelUp", function(){
+    model.incrementLevel();
+  })
 });
+
+
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

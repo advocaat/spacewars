@@ -1,15 +1,18 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Dao = require('../DAO/index');
-var user = null;
+var model = require('../model');
+
 var router = express.Router();
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-
-    res.render('index', {username: user});
+    console.log("USER ", model.getUser());
+    res.render('index', {username: model.getUser(), level: model.getLevel()});
 });
+
+
 
 router.post('/gameOver', function (req, res, next) {
     var gameTime = JSON.stringify(req.body.time);
@@ -39,7 +42,8 @@ router.post('/register', function(req,res, next){
 router.post('/login', function(req, res, next){
     console.log("name "+ req.body.username + " password " + req.body.password);
     Dao.retreiveUsernameAndPassword(req.body.username, req.body.password, function(doc){
-        user = doc;
+        console.log("routes"+ doc);
+        model.setUser(doc);
         res.redirect('/');
     })
 

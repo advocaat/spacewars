@@ -14,8 +14,7 @@ var GameStateSchema = new Schema({
     enemyPosition: [PositionSchema],
     playerCurrency: Number,
     playerMoves: Number,
-    playerTime: Number,
-    timeAway: Number
+    playerTime: Number
 });
 
 var collectionName = "local";
