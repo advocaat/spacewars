@@ -19,11 +19,8 @@ loadPlayerObject();
 camera.position.z = 5;
 camera.position.y = 4;
 camera.rotation.x = -25 * Math.PI / 180;
-
-
 render();
 drawGraph();
-
 handleInput();
 enemyAdder();
 $(document).ready(function () {

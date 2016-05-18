@@ -35,15 +35,14 @@
     <div id="moves"></div>
     <div id="timer"></div>
     <div id="ships">
-        <canvas width="900" height="150" id="myShips">Your browser does not support canvas</canvas>
+        <%userShips.forEach(function(ship){%>
+        <% include partials/userShip.ejs %>
+        <%});%>
     </div>
     <div id="buttonPannle">
         <p id="logged"></p>
         <script>
             localStorage.setItem("username","<%- username %>");
-            console.log("cunt0" + localStorage.getItem("username"));
-
-
             if(localStorage.getItem("username")!= "") {
                 $("#logged").append("Logged in as: "+localStorage.getItem("username"));
             }else{
@@ -59,6 +58,8 @@
             <li><button class="btn btn-warning">Leader Boards</button></li>
             <li><button class="btn btn-danger">Donate</button></li>
         </ul>
+
+
         <% include partials/login.ejs %>
     </div>
 

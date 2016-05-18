@@ -1,30 +1,41 @@
-function addHighScore(score, moves) {
-    var highscores = JSON.parse(localStorage.getItem("scores")) || new Array();
-    highscores.sort(Test);
+function addHighScore(name, time, moves, level) {
+    // var highscores =  JSON.parse(localStorage.getItem("scores")) || new Array();
+    //
+    // try {
+    //     highscores.sort(Test);
+    // }catch(err){
+    //     console.log(err);
+    // }
+    // if (highscores[level].length >= 5) {
+    //     var lowest = highscores[level].shift();
+    //     if (lowest[0] < moves) {
+    //         highscores.push([moves, time, name, level]);
+    //     } else {
+    //         highscores.push(lowest);
+    //     }
+    // } else {
+    //     highscores.push([moves, time, name, level]);
+    // }
+    // //make sure its still sorted
+    // highscores.sort(Test);
+    // var socket = io('http://localhost:3000');
+    // socket.emit("highscore", highscore);
 
-    if (highscores.length >= 5) {
-        var lowest = highscores.shift();
-        if (lowest[0] < moves) {
-            highscores.push([moves, score]);
-        } else {
-            highscores.push(lowest);
-        }
-    } else {
-        highscores.push([moves, score]);
-    }
-    //make sure its still sorted
-    highscores.sort(Test);
-    console.log("moves " + highscores[0][0].toString() + "times " + highscores[0][1].toString());
-    localStorage.setItem("scores", JSON.stringify(highscores));
+    // localStorage.setItem("scores", JSON.stringify(highscores));
 }
 
-function displayHighScores() {
-    var highscores = JSON.parse(localStorage.getItem("scores"));
-    console.log("type " + typeof(highscores));
+function displayHighScores(scores, score) {
+    //var highscores = JSON.parse(localStorage.getItem("scores"));
+    //console.log("type " + typeof(scores));
     var parentElement = document.getElementById("scores");
-    for (var i = highscores.length - 1; i >= 0; i--) {
+    for (var i = 0; i < scores.length; i++) {
         var item = document.createElement('li');
-        item.innerHTML = "Moves " + highscores[i][0] + "<br/>" + "Time: " + highscores[i][1];
+        if (scores[i]["userMoves"] == score["moves"] && scores[i]["userTime"] == score["time"].trim(0) && scores[i]["userName"] == score["name"]) {
+            console.log("here");
+            item.innerHTML = "<p class='newScore'>Name: " + scores[i]["userName"] + "<br/>Moves: " + scores[i]["userMoves"] + "<br/>Time: " + scores[i]["userTime"] + "</p>";
+        } else {
+            item.innerHTML = "<p>Name: " + scores[i]["userName"] + "<br/>Moves: " + scores[i]["userMoves"] + "<br/>Time: " + scores[i]["userTime"]+ "</p>";
+        }
         parentElement.appendChild(item);
 
     }
@@ -33,5 +44,5 @@ function displayHighScores() {
 
 
 function Test(a, b) {
-    return a[0] < b[0] ? true : false;
+    return a["moves"] < b["moves"] ? true : false;
 }

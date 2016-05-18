@@ -1,6 +1,7 @@
 var user = "";
 var level = 3;
 
+
 var functions = {};
 
 functions.setUser = function(username){

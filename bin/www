@@ -41,6 +41,16 @@ io.on('connection', function (socket) {
   })
   socket.on("levelUp", function(){
     model.incrementLevel();
+  });
+  
+  socket.on("highscore", function(score){
+    DAO.updateLeaderboard(score);
+    
+  })
+  
+  socket.on("newShip", function(data){
+    DAO.insertUserShip(data);
+    
   })
 });
 

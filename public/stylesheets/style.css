@@ -73,3 +73,24 @@ canvas {
   margin-right: 1%;
   width: 35%;
 }
+
+.newScore{
+  font-size: larger;
+  color: #006600;
+
+}
+
+.headline{
+  text-align: center;
+}
+
+.top{
+  margin-top: 80px;
+}
+
+.top p{
+  margin-top: 12px;
+  font-size: larger;
+  font-weight: 700;
+
+}

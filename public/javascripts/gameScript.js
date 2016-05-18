@@ -17,7 +17,7 @@ var cols = level;
 var selected = false;
 var pieceWidth = my_canvas.width / cols;
 var pieceHeight = my_canvas.height / rows;
-var myimg
+var myimg;
 var imgData;
 var winPieces = [];
 var numMoves = 0;

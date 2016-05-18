@@ -24,9 +24,21 @@
     var myTime = document.getElementById("myTime");
     var time = <%- gameTime %>;
     var moves = <%- gameMoves %>;
-    addHighScore(time, moves);
-    myTime.innerHTML = "lasted " + time;
-    displayHighScores();
+    var name = <%- userName %>;
+    var level = <%- level %>;
+    var scores = <%- scores %>;
+    var score = {};
+    score["time"] = time;
+    score["moves"] = moves;
+    score["name"] = name;
+    score["level"] = level;
+
+    //addHighScore(name, time, moves, level);
+//    var socket = io('http://localhost:3000');
+//    socket.emit("highscore", score);
+
+    myTime.innerHTML = "<p>Moves: "+ moves + "<br/>Time: " + time+ "</p>";
+    displayHighScores(scores, score);
 
     var countdown = document.getElementById("countdown");
     var i = 10;
@@ -41,6 +53,7 @@
             }
         }
     }, 1000)
+
 </script>
 
 

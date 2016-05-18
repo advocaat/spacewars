@@ -3,10 +3,39 @@
 <head>
     <meta charset="utf-8">
     <title>hoi bra</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"
+              integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+              crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="row">
+    <h1 class="headline">Leader Board</h1>
+    <div id="first" class="col-xs-4 top"><h2 class="headline">Level 1</h2></div>
+
+    <div id="second" class="col-xs-4 top"><h2 class="headline">Level 2</h2></div>
+    <div id="third" class="col-xs-4 top"><h2 class="headline">Level 3</h2></div>
+</div>
+<script>
+    var scores = <%- scores %>;
+    console.log(scores);
+    scores.level1.forEach(function(levelScores){
+        $('#first').append("<p class='col-xs-4'>Name: " + levelScores["userName"] + "</p><p class='col-xs-4'>Moves: "+ levelScores["userMoves"]+
+                        "</p><p class='col-xs-4'>Time: "+ levelScores["userTime"] +"</p>");
+    })
+    scores.level2.forEach(function(levelScores){
+        $('#second').append("<p class='col-xs-4'>Name: " + levelScores["userName"] + "</p><p class='col-xs-4'>Moves: "+ levelScores["userMoves"]+
+                "</p><p class='col-xs-4'>Time: "+ levelScores["userTime"] +"</p>");
+    })
+    scores.level3.forEach(function(levelScores){
+        $('#third').append("<p class='col-xs-4'>Name: " + levelScores["userName"] + "</p><p class='col-xs-4'>Moves: "+ levelScores["userMoves"]+
+                "</p><p class='col-xs-4'>Time: "+ levelScores["userTime"] +"</p>");
+    })
+</script>
+
 
 
 </body>

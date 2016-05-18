@@ -8,7 +8,6 @@ function getRandomColor() {
 }
 
 function handleInput() {
-
     window.onkeydown = function (e) {
         var key = e.keyCode ? e.keyCode : e.which;
         if (key == 68) {
@@ -76,9 +75,13 @@ function handleInput() {
             document.getElementById("messageBox").innerHTML = "<h2>You Win</h3>";
             var gameTimer = document.getElementById('timer').childNodes[0].innerHTML;
             setTimeout(function () {
-                var myData = [];
+                console.log("my name "+ localStorage.getItem("username"));
+                var myData = {};
+                myData["name"] = localStorage.getItem("username");
                 myData["moves"] = numMoves;
                 myData["time"] = gameTimer;
+                myData["level"] = level;
+                socket.emit("highscore", myData);
                 post(myData, "/gameWin");
 
             }, 2000);
@@ -105,13 +108,11 @@ var rand = function () {
     return Math.floor(Math.random() * 15)
 };
 
-
 function lowerZ(cube) {
     return cube.position.z += 0.1;
 }
 
 function gameSave() {
-
     var obj = {}
     obj.playerName = localStorage.getItem("username");
     myPos.color = null;
@@ -125,19 +126,15 @@ function gameSave() {
     obj.playerCurrency = 25;
     obj.playerMoves = numMoves;
     obj.playerTime = document.getElementById('timer').childNodes[0].innerHTML;
-
-
     console.log("Saving Game State");
     socket.emit("gamesave", obj);
 }
 
 function post(dictionary, url) {
-
     // Create the form object
     var form = document.createElement("form");
     form.setAttribute("method", "post");
     form.setAttribute("action", url);
-
     // For each key-value pair
     for (key in dictionary) {
         //alert('key: ' + key + ', value:' + dictionary[key]); // debug
@@ -147,7 +144,6 @@ function post(dictionary, url) {
         hiddenField.setAttribute("value", dictionary[key]);
         // append the newly created control to the form
         form.appendChild(hiddenField);
-
         document.body.appendChild(form); // inject the form object into the body section
         form.submit();
     }

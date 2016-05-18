@@ -1,9 +1,12 @@
 var mongoose = require('mongoose');
+
+
 var Schema = mongoose.Schema;
 
 var ShipSchema = new Schema({
-    model: String
-});
+    shipName: String,
+    shipPrice: Number,
+    shipImage: String});
 
 var UserSchema = new Schema({
     name: String,
