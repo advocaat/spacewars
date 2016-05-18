@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+
 var users = require('./routes/users');
 
 var app = express();
@@ -22,6 +22,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'mySecretKey', resave: true, saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Using the flash middleware provided by connect-flash
+// To store messages in session and displaying them in templates
+var flash = require('connect-flash');
+app.use(flash());
+
+var routes = require('./routes/index')(passport);
+
+var initPassport = require('./control/passport/init');
+initPassport(passport)
 
 app.use('/', routes);
 app.use('/users', users);

@@ -9,7 +9,11 @@ var ShipSchema = new Schema({
     shipImage: String});
 
 var UserSchema = new Schema({
-    name: String,
+    id: String,
+    email: String,
+    firstName: String,
+    lastName: String,
+    username: String,
     currency: Number,
     password: String,
     ships: [ShipSchema]

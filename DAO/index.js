@@ -53,31 +53,31 @@ functions.getGameState = function (playerName, callback) {
     });
 
 }
-
-functions.addUser = function (name, currency, password) {
-    var user = new User();
-    user.name = name;
-    user.currency = currency;
-    user.password = password;
-    user.ships = [];
-    user.save(function (err) {
-        if (err) {
-            console.log("No save there" + err);
-        }
-    })
-}
-
-functions.retreiveUsernameAndPassword = function (username, password, callback) {
-    User.findOne({name: username, password: password}, function (err, doc) {
-        if (err) {
-            console.log(err);
-        }
-        console.log("name-o " + doc.name)
-        callback(doc.name);
-
-
-    });
-}
+//
+// functions.addUser = function (name, currency, password) {
+//     var user = new User();
+//     user.name = name;
+//     user.currency = currency;
+//     user.password = password;
+//     user.ships = [];
+//     user.save(function (err) {
+//         if (err) {
+//             console.log("No save there" + err);
+//         }
+//     })
+// }
+//
+// functions.retreiveUsernameAndPassword = function (username, password, callback) {
+//     User.findOne({name: username, password: password}, function (err, doc) {
+//         if (err) {
+//             console.log(err);
+//         }
+//         console.log("name-o " + doc.name)
+//         callback(doc.name);
+//
+//
+//     });
+// }
 
 functions.getAvailableShips = function (callback) {
     Ship.find({}, function (err, docs) {
@@ -200,7 +200,7 @@ functions.insertUserShip = function (data) {
 
 functions.getUserInfos = function(name, callback)
 {
-    User.findOne({"name": name}, function (err, data) {
+    User.findOne({"username": name}, function (err, data) {
         if (err) {
             console.log(err);
 

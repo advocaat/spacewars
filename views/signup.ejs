@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Onetime - Home</title>
+    <title>Onetime - Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -8,36 +8,33 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!-- Signin CSS -->
-    <link href="stylesheets/signin.css" rel="stylesheet" type="text/css">
+    <!-- Signup CSS -->
+    <link href="stylesheets/signup.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="container">
-    <form class='form-signin' action='/login' method='POST'>
-        <h2 class='form-signin-heading'>Welcome to SpaceWars</h2>
+<div class='container'>
+    <form class='form-signup' action='/signup' method='POST'>
+        <h2 class='form-signup-heading'>SpaceWars Signup</h2>
         <!-- show any messages that come back with authentication -->
         <% if (message.length > 0) { %>
         <div class="alert alert-danger fade in"><%= message %></div>
+        <% } %>
+        <% if (okMessage.length > 0) { %>
+        <div class="alert alert-success fade in"><%= okMessage %></div>
         <% } %>
         <label class='sr-only'>Username</label>
         <input type='text' name='username' class='form-control' placeholder='Username' required autofocus>
         <label class='sr-only'>Password</label>
         <input type='password' name='password' class='form-control' placeholder='Password' required>
-
-        <div class='checkbox'>
-            <a href='/signup' class='text-center new-account'>Create an account</a>
-        </div>
-        <button class='btn btn-lg btn-primary btn-block' type='submit'>Sign in</button>
-        <!--<div class='social'>-->
-        <!--<ul>-->
-        <!--<li><a href='/login/facebook' class="btn btn-social-icon btn-facebook"><i-->
-        <!--class="fa fa-facebook fa-5x"></i></a></li>-->
-        <!--<li><a href='/login/twitter' class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter fa-5x"></i></a>-->
-        <!--</li>-->
-        <!--<li><a href='/login/google' class="btn btn-social-icon btn-google-plus"><i-->
-        <!--class="fa fa-google-plus fa-5x"></i></a></li>-->
-        <!--</ul>-->
-        <!--</div>-->
+        <label class='sr-only'>Email</label>
+        <input type='email' name='email' class='form-control' placeholder='Email' required>
+        <label class='sr-only'>Firstname</label>
+        <input type='text' name='firstName' class='form-control' placeholder='First Name' required>
+        <label class='sr-only'>Lastname</label>
+        <input type='text' name='lastName' class='form-control' placeholder='Last Name' required>
+        <br/>
+        <button class='btn btn-lg btn-primary btn-block' type='submit'>Register</button>
+        <a class='btn btn-lg btn-primary btn-block' href='/game'>Back</a>
     </form>
 </div>
 </body>

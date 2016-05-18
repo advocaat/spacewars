@@ -16,7 +16,7 @@
 <h1>You Win!!!</h1>
 
 <p id="myTime"></p>
-<a href="/">New Game</a>
+<a href="/game">New Game</a>
 <div id="countdown"></div>
 <ul id="scores"></ul>
 <script src="javascripts/game/levelUp.js"></script>
@@ -49,7 +49,7 @@
             console.log("count" + i);
             i -= 1;
             if (i == -1) {
-                location.href = "/";
+                location.href = "/game";
             }
         }
     }, 1000)
