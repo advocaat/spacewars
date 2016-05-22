@@ -1,4 +1,5 @@
 var user = "";
+var money = 0;
 var level = 3;
 
 
@@ -8,6 +9,8 @@ functions.setUser = function(username){
     console.log("model "+ username);
     user = username;
 }
+
+
 
 functions.setLevel = function(level){
     this.level = level;
@@ -24,5 +27,14 @@ functions.incrementLevel = function(){
 functions.getUser = function(){
     return user;
 }
+
+functions.setBank = function(currency){
+    console.log("model $$$$$$$ "+ currency);
+    money = currency;
+};
+
+functions.getBank = function(){
+    return money
+};
 
 module.exports = functions;

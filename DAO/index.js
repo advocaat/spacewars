@@ -86,6 +86,25 @@ functions.getAvailableShips = function (callback) {
     });
 
 }
+
+
+functions.getShipsAndUserDeets = function (user, callback) {
+    var deets = {};
+    User.findOne({username: user}, function(err, docs){
+        if(err) console.log(err);
+        else{
+            console.log("GOT DOCS "+ JSON.stringify(docs));
+            deets.user = docs;
+        }
+    })
+    Ship.find({}, function (err, docs) {
+        deets.ships = docs;
+        callback(deets);
+    });
+
+
+}
+
 functions.updateLeaderboard = function (highscore) {
     var updated = false;
     Score.find({"level": highscore["level"]}, function (err, docs) {
@@ -181,20 +200,20 @@ functions.getScores = function (callback) {
 
 
 functions.insertUserShip = function (data) {
-    var ship = new Ship();
-    ship.shipName = data.name;
-    ship.shipPrice = data.price;
-    ship.shipImage = "/images/" + data.name + ".jpg";
-    console.log(ship);
-    User.update({"name": data.user}, {$push: {"ships": ship}}, function (err, data) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            console.log(data);
-        }
-    })
-
+        var ship = new Ship();
+        ship.shipName = data.name;
+        ship.shipPrice = data.price;
+        ship.shipImage = "/images/" + data.name + ".jpg";
+        console.log(ship);
+        User.update({username: data.user}, {$push: {"ships": ship}}, function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log(data);
+            }
+        })
+ 
 }
 
 
@@ -211,6 +230,18 @@ functions.getUserInfos = function(name, callback)
         }
             callback(data);
     });
+}
+
+
+functions.updateBank  = function(username, amount){
+    User.update({username: username}, {$inc : {currency: amount}}, function(err, done){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log("updated bank cunt "+ JSON.stringify(done));
+        }
+    })
 }
 
 module.exports = functions;

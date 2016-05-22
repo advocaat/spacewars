@@ -24,6 +24,19 @@ function addHighScore(name, time, moves, level) {
     // localStorage.setItem("scores", JSON.stringify(highscores));
 }
 
+
+
+
+function swapShip(ship){
+    var shipId = ship + ".json";
+    localStorage.setItem("shipId", shipId);
+    console.log("nut eye "+ localStorage.getItem("shipId"))
+}
+
+
+
+
+
 function displayHighScores(scores, score) {
     //var highscores = JSON.parse(localStorage.getItem("scores"));
     //console.log("type " + typeof(scores));

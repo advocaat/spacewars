@@ -16,8 +16,11 @@
 <% allShips.forEach(function(ship){ %>
 <% include partials/storeItem.ejs %>
 <% }) %>
+
 <script>
-var user = <%- username %>;
+var user = "<%- user.username %>";
+var currency = <%- user.currency %>;
+console.log("MY MONEY!!"+ currency);
 </script>
 
 </body>

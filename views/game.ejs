@@ -20,6 +20,7 @@
     <style>
 
     </style>
+    <script src="javascripts/model.js"></script>
     <script src="javascripts/Collisions.js"></script>
     <script src="javascripts/CollisionUtils.js"></script>
 </head>
@@ -34,23 +35,52 @@
     <div id="messageBox"></div>
     <div id="moves"></div>
     <div id="timer"></div>
+    <div if="banks"><p id="bankTxt">
+
+        </p></div>
     <div id="ships">
+
         <%userShips.forEach(function(ship){%>
         <% include partials/userShip.ejs %>
         <%});%>
+
     </div>
     <div id="buttonPannle">
         <p id="logged"></p>
         <script>
+            var currency = "<%- Coincurrency %>";
+
             localStorage.setItem("username","<%- username %>");
+            localStorage.setItem("Coincurrency","<%- Coincurrency %>");
+            console.log("cunt0" + localStorage.getItem("username"));
+            console.log("bank " + localStorage.getItem("Coincurrency"));
+
             if(localStorage.getItem("username")!= "") {
-                $("#logged").append("Logged in as: "+localStorage.getItem("username"));
+                $("#logged").append("Logged in as: "+ localStorage.getItem("username"));
+                $("#bankTxt").append("Coins: $" + (currency));
             }else{
                 $('#logged').hide();
+                $('#bank').hide();
             }
-
         </script>
-
+        <script>
+            var keys = {};
+            window.addEventListener("keydown",
+                    function(e){
+                        keys[e.keyCode] = true;
+                        switch(e.keyCode){
+                            case 37: case 39: case 38:  case 40: // Arrow keys
+                            case 32: e.preventDefault(); break; // Space
+                            default: break; // do not block other keys
+                        }
+                    },
+                    false);
+            window.addEventListener('keyup',
+                    function(e){
+                        keys[e.keyCode] = false;
+                    },
+                    false);
+        </script>
 
         <ul id="buttonList">
             <li><button class="btn btn-primary">SHOP</button></li>
@@ -64,13 +94,17 @@
 </div>
 
 </body>
-<script>var level = <%- level %></script>
+
+<script>var level = <%- level %>;
+</script>
+
 <script src="javascripts/gameScript.js"></script>
 <script src="javascripts/game/collisionDetection.js"></script>
 <script src="javascripts/game/helpers.js"></script>
 <script src="javascripts/game/puzzleGame.js"></script>
 <script src="javascripts/game/spaceGame.js"></script>
 <script src="javascripts/game/runGame.js"></script>
+<script src="javascripts/game/setShip.js"></script>
 <script>
 
 

@@ -39,8 +39,10 @@ io.on('connection', function (socket) {
       socket.emit("savedGame", gameState);
     });
   })
-  socket.on("levelUp", function(){
+  socket.on("levelUp", function(user){
     model.incrementLevel();
+    console.log("MY USER NAME " + JSON.stringify(user));
+    DAO.updateBank(user.user, 20);
   });
   
   socket.on("highscore", function(score){
@@ -50,7 +52,7 @@ io.on('connection', function (socket) {
   
   socket.on("newShip", function(data){
     DAO.insertUserShip(data);
-    
+    DAO.updateBank(data.user, - data.price);
   })
 });
 

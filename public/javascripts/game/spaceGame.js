@@ -26,7 +26,7 @@ function loadPlayerObject() {
     scene.add(directionalLight);
     var loader = new THREE.JSONLoader();
 
-    loader.load("/javascripts/advo.json", function (geometry, material) {
+    loader.load("/javascripts/"+ localStorage.getItem("shipId"), function (geometry, material) {
         zmesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial());
         zmesh.position.set(-.3, -2, -.5);
         zmesh.rotateX(180);

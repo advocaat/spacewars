@@ -26,7 +26,9 @@ module.exports = function(passport) {
         console.log("USER ", req.user.username);
         Dao.getUserInfos(req.user.username, function (data) {
             console.log("ships "+ JSON.stringify(data.ships));
-            res.render('game', {username: req.user.username.toString(), level: model.getLevel(), userShips: data.ships});
+            model.setBank(data.currency);
+            res.render('game', {username: req.user.username.toString(), level: model.getLevel(), userShips: data.ships, 
+                Coincurrency: model.getBank()});
         });
     });
 
@@ -104,11 +106,13 @@ module.exports = function(passport) {
 
 
     router.get('/store', isAuthenticated,function (req, res) {
-        Dao.getAvailableShips(function (ships) {
-            res.render('shop', {allShips: ships, username: req.user.username});
-        })
-
+        
+        Dao.getShipsAndUserDeets(req.user.username, function (deets) {
+            console.log(JSON.stringify(deets.ships))
+            res.render('shop', {allShips: deets.ships, user: deets.user});
+        });
     });
+    
     router.get('/leaders', isAuthenticated,function (req, res) {
         Dao.getScores(function (scores) {
             res.render('leaderboard', {scores: JSON.stringify(scores)});
