@@ -16,7 +16,8 @@ var UserSchema = new Schema({
     username: String,
     currency: Number,
     password: String,
-    ships: [ShipSchema]
+    ships: [ShipSchema],
+    level: Number
 });
 
 var User = mongoose.model('User', UserSchema, "Users");

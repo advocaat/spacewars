@@ -26,9 +26,9 @@ module.exports = function(passport) {
         console.log("USER ", req.user.username);
         Dao.getUserInfos(req.user.username, function (data) {
             console.log("ships "+ JSON.stringify(data.ships));
-            model.setBank(data.currency);
-            res.render('game', {username: req.user.username.toString(), level: model.getLevel(), userShips: data.ships, 
-                Coincurrency: model.getBank()});
+                console.log("MY LEVEL "+ data.level);
+            res.render('game', {username: req.user.username.toString(), level: data.level, userShips: data.ships,
+                Coincurrency: data.currency});
         });
     });
 
@@ -44,7 +44,8 @@ module.exports = function(passport) {
         var gameTime = JSON.stringify(req.body.time);
         var gameMoves = JSON.stringify(req.body.moves);
         var userName = JSON.stringify(req.body.name);
-        var level = model.getLevel();
+        var level = req.body.level;
+        console.log("Lelvel "+ level);
         Dao.getLevelScores(level, function (scores) {
             res.render('gameWin', {
                 gameTime: gameTime,
@@ -54,30 +55,9 @@ module.exports = function(passport) {
                 scores: JSON.stringify(scores)
             });
         })
+      
     });
-
-    // router.get('/register', function (req, res, next) {
-    //     res.render('register');
-    //
-    // })
-    // router.post('/register', function (req, res, next) {
-    //     Dao.saveGameState(req.body.username, {}, {}, 0, 0, 0);
-    //     console.log("register " + JSON.stringify(req.body));
-    //     Dao.addUser(req.body.username, 50, req.body.password);
-    //     res.redirect('/');
-    // });
-
-    // router.post('/login',function (req, res, next) {
-    //     console.log("name " + req.body.username + " password " + req.body.password);
-    //     Dao.retreiveUsernameAndPassword(req.body.username, req.body.password, function (doc) {
-    //         console.log("routes" + doc);
-    //         model.setUser(doc);
-    //         res.redirect('/');
-    //     })
-    //
-    // });
-
-
+    
 
     /* GET Registration Page */
     router.get('/signup', function (req, res) {

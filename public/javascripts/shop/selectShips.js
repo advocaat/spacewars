@@ -14,6 +14,7 @@ $(".storeItem").each(function(){
         if(currency >= price) {
             socket.emit("newShip", {name: name.toString(), price: parseInt(price.toString()), user: user});
             console.log("emitted newShip");
+            location.href = "/game";
         }else{
             alert("Did you think we are a charity?");
         }

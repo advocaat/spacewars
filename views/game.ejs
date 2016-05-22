@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
-    <title>hoi bra</title>
+    <title>Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script   src="https://code.jquery.com/jquery-2.2.3.min.js"
@@ -35,12 +35,12 @@
     <div id="messageBox"></div>
     <div id="moves"></div>
     <div id="timer"></div>
-    <div if="banks"><p id="bankTxt">
-
-        </p></div>
+    <div id="Banks">
+        <p id="bankTxt"></p>
+    </div>
     <div id="ships">
 
-        <%userShips.forEach(function(ship){%>
+        <% userShips.forEach(function(ship){%>
         <% include partials/userShip.ejs %>
         <%});%>
 
@@ -83,10 +83,9 @@
         </script>
 
         <ul id="buttonList">
-            <li><button class="btn btn-primary">SHOP</button></li>
-            <li><button class="btn btn-success">Stats</button></li>
-            <li><button class="btn btn-warning">Leader Boards</button></li>
-            <li><button class="btn btn-danger">Donate</button></li>
+            <li><a href="/store"><button class="btn btn-primary">SHOP</button></a></li>
+            <li><a href="/leaders"><button class="btn btn-success">LeaderBoards</button></a></li>
+            <li><a href="/signout"><button class="btn btn-danger">Logout</button></a></li>
         </ul>
 
     </div>
@@ -106,7 +105,6 @@
 <script src="javascripts/game/runGame.js"></script>
 <script src="javascripts/game/setShip.js"></script>
 <script>
-
 
 </script>
 </html>

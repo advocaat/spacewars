@@ -2,6 +2,16 @@ body {
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #eee;
+    background: url("../images/header-top.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+a.text-center.new-account {
+    color: #FFFFFF;
+    font-size: 100%;
 }
 
 .form-signin {
@@ -12,6 +22,8 @@ body {
 
 .form-signin .form-signin-heading,
 .form-signin {
+    color: #FFFFFF;
+    text-align: center;
     margin-bottom: 10px;
 }
 

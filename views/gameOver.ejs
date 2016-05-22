@@ -1,23 +1,27 @@
 <!doctype html>
-
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>game over</title>
     <script src="javascripts/model.js"></script>
+    <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
 </head>
-<body>
-<h1>Game Over!!</h1>
+<body id="spaceBackground">
+<h1 class="whiteTxt">Game Over!!</h1>
 
-<p id="myTime"></p>
+<p id="myTime" class="whiteTxt"></p>
+<p id="myMoves" class="whiteTxt"></p>
 <a href="/game">New Game</a>
-<div id="countdown"></div>
-<ul id="scores"></ul>
+<div id="countdown" class="whiteTxt"></div>
+<ul id="scores" class="whiteTxt"></ul>
 <script>
+    var myMoves = document.getElementById("myMoves");
     var myTime = document.getElementById("myTime");
     var time = <%- gameTime %>;
+    var moves = <%- gameMoves %>;
     myTime.innerHTML = "lasted " + time;
-    displayHighScores();
+    myMoves.innerHTML = "Moves " + moves;
+    //displayHighScores();
 
     var countdown = document.getElementById("countdown");
     var i = 3;

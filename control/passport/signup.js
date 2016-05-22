@@ -2,6 +2,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../../models/User');
 var bCrypt = require('bcrypt-nodejs');
 
+
 module.exports = function (passport) {
     passport.use('signup', new LocalStrategy({
             passReqToCallback: true // Allows us to pass back the entire request to the callback
@@ -29,7 +30,9 @@ module.exports = function (passport) {
                         newUser.email = req.param('email');
                         newUser.firstName = req.param('firstName');
                         newUser.lastName = req.param('lastName');
-                        newUser.currency = 50
+                        newUser.currency = 50;
+                        newUser.level = 3;
+                        newUser.ships = [{"shipName": "dominator", "shipPrice": 2000000, "shipImage": "/images/dominator.jpg"}];
                         // Save the user
                         newUser.save(function (err) {
                             if (err) {

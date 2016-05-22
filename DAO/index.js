@@ -51,8 +51,22 @@ functions.getGameState = function (playerName, callback) {
         callback(doc);
 
     });
-
 }
+
+
+functions.updateUserLevel = function(user, level){
+    User.update({username: user},{$inc: {level: level}}, function(err, data){
+        if(err){
+            console.log(err);
+        
+        }else{
+            console.log("Updated user level" + data );
+            
+        }
+        
+    })
+}
+
 //
 // functions.addUser = function (name, currency, password) {
 //     var user = new User();
@@ -204,7 +218,7 @@ functions.insertUserShip = function (data) {
         ship.shipName = data.name;
         ship.shipPrice = data.price;
         ship.shipImage = "/images/" + data.name + ".jpg";
-        console.log(ship);
+        console.log("poop" + ship + data.name + data.price);
         User.update({username: data.user}, {$push: {"ships": ship}}, function (err, data) {
             if (err) {
                 console.log(err);
@@ -242,6 +256,21 @@ functions.updateBank  = function(username, amount){
             console.log("updated bank cunt "+ JSON.stringify(done));
         }
     })
+}
+
+functions.resetLevels = function(user){
+    console.log("USERR" + user);
+    User.update({username: user}, {$set: {level: 3}}, function(err, done){
+        if(err){
+            console.log(err);
+
+        }else{
+
+            console.log("reset level " + done);
+        }
+
+    })
+
 }
 
 module.exports = functions;

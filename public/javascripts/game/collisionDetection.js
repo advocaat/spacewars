@@ -24,7 +24,7 @@ function castemz() {
         }
     }
     if (died) {
-        document.getElementById("messageBox").innerHTML = "<h2>You Died</h3>";
+        document.getElementById("messageBox").innerHTML = "<h2 class = diedMsg>You Died</h3>";
         var gameTime = document.getElementById('timer').childNodes[0].innerHTML;
         setTimeout(function () {
             var myData = [];

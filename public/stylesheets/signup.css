@@ -2,6 +2,11 @@ body {
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #eee;
+    background: url("../images/header-top.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .form-signup {
@@ -13,6 +18,8 @@ body {
 .form-signup .form-signup-heading,
 .form-signup {
     margin-bottom: 10px;
+    color: #FFFFFF;
+    text-align: center;
 }
 
 .form-signup .form-control {
@@ -34,4 +41,3 @@ body {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
-

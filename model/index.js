@@ -1,6 +1,6 @@
-var user = "";
-var money = 0;
-var level = 3;
+//var user = "";
+//var money = 0;
+//var level = 3;
 
 
 var functions = {};
@@ -12,13 +12,7 @@ functions.setUser = function(username){
 
 
 
-functions.setLevel = function(level){
-    this.level = level;
-}
 
-functions.getLevel = function(){
-    return level;
-}
 functions.incrementLevel = function(){
     level += 1;
     console.log("level "+ level);

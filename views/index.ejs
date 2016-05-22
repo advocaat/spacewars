@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Onetime - Home</title>
+    <title>Spacewars Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -14,7 +14,7 @@
 <body>
 <div class="container">
     <form class='form-signin' action='/login' method='POST'>
-        <h2 class='form-signin-heading'>Welcome to SpaceWars</h2>
+        <h2 class='form-signin-heading'>SpaceWars</h2>
         <!-- show any messages that come back with authentication -->
         <% if (message.length > 0) { %>
         <div class="alert alert-danger fade in"><%= message %></div>
@@ -39,7 +39,7 @@
         <!--</ul>-->
         <!--</div>-->
         <script>
-            localStorage.setItem("shipId", "tyler.json");
+            localStorage.setItem("shipId", "dominator.json");
         </script>
     </form>
 </div>

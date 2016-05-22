@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>hoi bra</title>
+    <title>Win</title>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script   src="https://code.jquery.com/jquery-2.2.3.min.js"
               integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
@@ -12,13 +12,13 @@
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
     <script src="javascripts/model.js"></script>
 </head>
-<body>
-<h1>You Win!!!</h1>
+<body id="spaceBackground">
+<h1 class="whiteTxt">You Win!!!</h1>
 
-<p id="myTime"></p>
+<p id="myTime" class="whiteTxt"></p>
 <a href="/game">New Game</a>
-<div id="countdown"></div>
-<ul id="scores"></ul>
+<div id="countdown" class="whiteTxt"></div>
+<ul id="scores" class="whiteTxt"></ul>
 <script src="javascripts/game/levelUp.js"></script>
 <script>
     var myTime = document.getElementById("myTime");
@@ -33,9 +33,9 @@
     score["name"] = name;
     score["level"] = level;
 
-    //addHighScore(name, time, moves, level);
-//    var socket = io('http://localhost:3000');
-//    socket.emit("highscore", score);
+    addHighScore(name, time, moves, level);
+    var socket = io('http://localhost:3000');
+    socket.emit("highscore", score);
 
     myTime.innerHTML = "<p>Moves: "+ moves + "<br/>Time: " + time+ "</p>";
     displayHighScores(scores, score);
@@ -45,7 +45,7 @@
 
     setInterval(function () {
         if (i >= -1) {
-            countdown.innerHTML = "<h2>" + i + "..</h2>";
+            countdown.innerHTML = "<h2 class='whiteTxt'>" + i + "..</h2>";
             console.log("count" + i);
             i -= 1;
             if (i == -1) {

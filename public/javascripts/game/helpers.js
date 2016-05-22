@@ -72,7 +72,7 @@ function handleInput() {
 
         if (JSON.stringify(pieces) == JSON.stringify(winPieces)) {
             console.log("Winner Winner Chicken Dinner");
-            document.getElementById("messageBox").innerHTML = "<h2>You Win</h3>";
+            document.getElementById("messageBox").innerHTML = "<h2 class='winMsg'>You Win</h3>";
             var gameTimer = document.getElementById('timer').childNodes[0].innerHTML;
             setTimeout(function () {
                 console.log("my name "+ localStorage.getItem("username"));

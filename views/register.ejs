@@ -1,10 +1,8 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>hoi bra</title>
+    <title>Register</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
     <script   src="https://code.jquery.com/jquery-1.12.3.min.js"
               integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
@@ -15,15 +13,15 @@
 <form action="/register" method="post">
     <label for="name">Username</label>
     <textarea name="username" id="username"></textarea>
-      <label for="password">Password</label>
+    <label for="password">Password</label>
     <textarea name="password" id="password"></textarea>
     <label for="confirm">Password</label>
     <textarea name="confirm" id="confirm"></textarea>
     <input type="submit" id="submit" value="register">
 </form>
 <script>
-   $('#submit').on("click", function (){
-       console.log("shitty");
+    $('#submit').on("click", function (){
+        console.log("shitty");
         if($('#password').val() === $('#confirm').val()){
             alert("Thanks for signing up, please enjoy these 50 tokens");
             return true;
@@ -40,4 +38,3 @@
 </script>
 </body>
 </html>
-

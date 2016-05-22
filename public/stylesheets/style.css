@@ -6,6 +6,47 @@ body {
 a {
   color: #00B7FF;
 }
+#winPage{
+  background-color: khaki;
+}
+
+#spaceBackground{
+  background: url("../images/header-top.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#storeItem{
+  color: #FFFFFF;
+}
+
+#statsTxt{
+  color: #FFFFFF;
+}
+
+.whiteTxt{
+  color: #FFFFFF;
+}
+
+#shipSelections{
+  margin-right: 2.5%;
+}
+
+#winPageStats{
+  margin-left: 2%;
+}
+
+#Banks{
+  font-size: 28px;
+  right: 5%;
+  color: #FFFFFF;
+  font-family: "Agency FB";
+  position: absolute;
+  top: 10px;
+}
+
 #dash{
   position: absolute;
   background-color: khaki;
@@ -13,6 +54,23 @@ a {
   left: 0;
   top: 0;
   bottom: 0;
+  background: url("../images/header-top.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#moves{
+  font-size: 28px;
+  right: 6.5%;
+  color: #FFFFFF;
+  font-family: "Agency FB";
+  position: absolute;
+  top: 45px;
+}
+
+#whiteTxt{
+  color: #FFFFFF;
 }
 
 canvas {
@@ -22,6 +80,27 @@ canvas {
 #mine {
   position: absolute;
   left: -950px;
+}
+
+#logged{
+  margin-left: 7%;
+  color: #FFFFFF;
+}
+
+.storeItem {
+  display: inline-block;
+}
+
+#ships {
+  position: absolute;
+  top: 469px;
+  width: 457px;
+  margin-left: 3%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 200px;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 #yours {
@@ -36,16 +115,19 @@ canvas {
 }
 
 #buttonPannle{
-  width: 35%;
-  margin-top: -50px;
-  height: 80%;
+  position: absolute;
+  left: 920px;
+  width:39%;
+  right:2%;
+  top: 50px;;
+  padding: 0.5%;
 }
 
 .btn {
-  width: 100%;
-  height: 165px;
+  width: 90%;
+  height: 120px;
   font-size: 30px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 #buttonList{
@@ -56,41 +138,27 @@ canvas {
   font-size: 32px;
   font-family: "Agency FB";
   position: absolute;
-  left: 950px;
+  left: 963px;
+  color: #FFFFFF;
   top: 10px;
 
 }
 #messageBox{
-  font-size: 38px;
-  font-family: "Agency FB";
   position: absolute;
-  top: -40px;
-  left: 1050px;
-}
-#buttonPannle{
-  float: right;
-  margin-top: -49%;
-  margin-right: 1%;
-  width: 35%;
+  font-family: "Agency FB";
+  margin: -100px 0 0 -200px;
+  top: 50%;
+  left: 40%;
 }
 
-.newScore{
-  font-size: larger;
-  color: #006600;
-
+.winMsg{
+  font-size: 120px;
+  font-weight: bold;
+  color: blue;
 }
 
-.headline{
-  text-align: center;
-}
-
-.top{
-  margin-top: 80px;
-}
-
-.top p{
-  margin-top: 12px;
-  font-size: larger;
-  font-weight: 700;
-
+.diedMsg{
+  font-size: 120px;
+  font-weight: bold;
+  color: red;
 }

@@ -1,6 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../../models/User');
 var bCrypt = require('bcrypt-nodejs');
+var DAO = require('../../DAO');
 
 module.exports = function (passport) {
     passport.use('login', new LocalStrategy({
@@ -25,6 +26,8 @@ module.exports = function (passport) {
                         return done(null, false, req.flash('loginMessage', 'Sorry, wrong password.'));
                     }
                     // User and password both match, return user from done method which will be treated like success
+
+                    DAO.resetLevels(user.username);
                     return done(null, user);
                 });
         }));
