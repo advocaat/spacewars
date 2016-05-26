@@ -1,164 +1,168 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
-}
-#winPage{
-  background-color: khaki;
+    color: #00B7FF;
 }
 
-#spaceBackground{
-  background: url("../images/header-top.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+#winPage {
+    background-color: khaki;
 }
 
-#storeItem{
-  color: #FFFFFF;
+#spaceBackground {
+    background: url("../images/header-top.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-#statsTxt{
-  color: #FFFFFF;
+#storeItem {
+    color: #FFFFFF;
 }
 
-.whiteTxt{
-  color: #FFFFFF;
+#statsTxt {
+    color: #FFFFFF;
 }
 
-#shipSelections{
-  margin-right: 2.5%;
+.whiteTxt {
+    color: #FFFFFF;
 }
 
-#winPageStats{
-  margin-left: 2%;
+#shipSelections {
+    margin-right: 2.5%;
 }
 
-#Banks{
-  font-size: 28px;
-  right: 5%;
-  color: #FFFFFF;
-  font-family: "Agency FB";
-  position: absolute;
-  top: 10px;
+#winPageStats {
+    margin-left: 2%;
 }
 
-#dash{
-  position: absolute;
-  background-color: khaki;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: url("../images/header-top.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-#moves{
-  font-size: 28px;
-  right: 6.5%;
-  color: #FFFFFF;
-  font-family: "Agency FB";
-  position: absolute;
-  top: 45px;
+#Banks {
+    font-size: 28px;
+    right: 5%;
+    color: #FFFFFF;
+    font-family: "Agency FB";
+    position: absolute;
+    top: 10px;
 }
 
-#whiteTxt{
-  color: #FFFFFF;
+#dash {
+    position: absolute;
+    background-color: khaki;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: url("../images/header-top.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#moves {
+    font-size: 28px;
+    right: 6.5%;
+    color: #FFFFFF;
+    font-family: "Agency FB";
+    position: absolute;
+    top: 45px;
+}
+
+#whiteTxt {
+    color: #FFFFFF;
 }
 
 canvas {
-  background-color: cornflowerblue;
+    background-color: cornflowerblue;
 }
 
 #mine {
-  position: absolute;
-  left: -950px;
+    position: absolute;
+    left: -950px;
 }
 
-#logged{
-  margin-left: 7%;
-  color: #FFFFFF;
+#logged {
+    margin-left: 7%;
+    color: #FFFFFF;
 }
 
 .storeItem {
-  display: inline-block;
+    display: inline-block;
 }
 
 #ships {
-  position: absolute;
-  top: 469px;
-  width: 457px;
-  margin-left: 3%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  height: 200px;
-  display: inline-block;
-  white-space: nowrap;
+    position: absolute;
+    top: 469px;
+    width: 457px;
+    margin-left: 3%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 200px;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 #yours {
-  background-color: aliceblue;
-  margin-top: 14px;
-  margin-left: 26px;
+    background-color: aliceblue;
+    margin-top: 14px;
+    margin-left: 26px;
 }
-#myShips{
-  margin-top: 5px;
-  margin-left: 26px;
+
+#myShips {
+    margin-top: 5px;
+    margin-left: 26px;
 
 }
 
-#buttonPannle{
-  position: absolute;
-  left: 920px;
-  width:39%;
-  right:2%;
-  top: 50px;;
-  padding: 0.5%;
+#buttonPannle {
+    position: absolute;
+    left: 920px;
+    width: 39%;
+    right: 2%;
+    top: 50px;;
+    padding: 0.5%;
 }
 
 .btn {
-  width: 90%;
-  height: 120px;
-  font-size: 30px;
-  margin-top: 5px;
+    width: 90%;
+    height: 120px;
+    font-size: 30px;
+    margin-top: 5px;
 }
 
-#buttonList{
-  list-style: none;
+#buttonList {
+    list-style: none;
 }
 
-#timer{
-  font-size: 32px;
-  font-family: "Agency FB";
-  position: absolute;
-  left: 963px;
-  color: #FFFFFF;
-  top: 10px;
+#timer {
+    font-size: 32px;
+    font-family: "Agency FB";
+    position: absolute;
+    left: 963px;
+    color: #FFFFFF;
+    top: 10px;
 
 }
-#messageBox{
-  position: absolute;
-  font-family: "Agency FB";
-  margin: -100px 0 0 -200px;
-  top: 50%;
-  left: 40%;
+
+#messageBox {
+    position: absolute;
+    font-family: "Agency FB";
+    margin: -100px 0 0 -200px;
+    top: 50%;
+    left: 40%;
 }
 
-.winMsg{
-  font-size: 120px;
-  font-weight: bold;
-  color: blue;
+.winMsg {
+    font-size: 120px;
+    font-weight: bold;
+    color: blue;
 }
 
-.diedMsg{
-  font-size: 120px;
-  font-weight: bold;
-  color: red;
+.diedMsg {
+    font-size: 120px;
+    font-weight: bold;
+    color: red;
 }

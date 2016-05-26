@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Win</title>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"
-              integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
-              crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"
+            integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+            crossorigin="anonymous">
     </script>
 
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
@@ -33,11 +33,10 @@
     score["name"] = name;
     score["level"] = level;
 
-    addHighScore(name, time, moves, level);
     var socket = io('http://localhost:3000');
     socket.emit("highscore", score);
 
-    myTime.innerHTML = "<p>Moves: "+ moves + "<br/>Time: " + time+ "</p>";
+    myTime.innerHTML = "<p>Moves: " + moves + "<br/>Time: " + time + "</p>";
     displayHighScores(scores, score);
 
     var countdown = document.getElementById("countdown");
@@ -55,8 +54,6 @@
     }, 1000)
 
 </script>
-
-
 
 
 </body>

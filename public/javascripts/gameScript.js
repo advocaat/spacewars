@@ -33,25 +33,36 @@ var socket;
 var enemyCubes = [];
 var pieces = createPieces();
 
+// Create the pieces
 function createPieces() {
+
     function piece(r, c) {
+
         var obj = {};
         obj.col = c;
         obj.row = r;
         return obj;
+
     }
 
     var pieceList = [];
 
     for (var i = 0; i < rows; i++) {
+
         for (var j = 0; j < cols; j++) {
-            pieceList.push(new piece(i, j))
+
+            pieceList.push(new piece(i, j));
+
         }
     }
+
     return pieceList;
+
 }
 
-
+// Calculate the time taken
 function calcGameTime() {
+
     gameTime = ((( new Date().getTime() - (startTime.getTime() + removedTime))) / 1000.0).toFixed(2).toString()
+    
 }

@@ -5,9 +5,9 @@
     <title>Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"
-              integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
-              crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"
+            integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+            crossorigin="anonymous">
     </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -40,9 +40,9 @@
     </div>
     <div id="ships">
 
-        <% userShips.forEach(function(ship){%>
+        <% userShips.forEach(function(ship){ %>
         <% include partials/userShip.ejs %>
-        <%});%>
+        <% }); %>
 
     </div>
     <div id="buttonPannle">
@@ -50,15 +50,15 @@
         <script>
             var currency = "<%- Coincurrency %>";
 
-            localStorage.setItem("username","<%- username %>");
-            localStorage.setItem("Coincurrency","<%- Coincurrency %>");
+            localStorage.setItem("username", "<%- username %>");
+            localStorage.setItem("Coincurrency", "<%- Coincurrency %>");
             console.log("cunt0" + localStorage.getItem("username"));
             console.log("bank " + localStorage.getItem("Coincurrency"));
 
-            if(localStorage.getItem("username")!= "") {
-                $("#logged").append("Logged in as: "+ localStorage.getItem("username"));
+            if (localStorage.getItem("username") != "") {
+                $("#logged").append("Logged in as: " + localStorage.getItem("username"));
                 $("#bankTxt").append("Coins: $" + (currency));
-            }else{
+            } else {
                 $('#logged').hide();
                 $('#bank').hide();
             }
@@ -66,26 +66,38 @@
         <script>
             var keys = {};
             window.addEventListener("keydown",
-                    function(e){
+                    function (e) {
                         keys[e.keyCode] = true;
-                        switch(e.keyCode){
-                            case 37: case 39: case 38:  case 40: // Arrow keys
-                            case 32: e.preventDefault(); break; // Space
-                            default: break; // do not block other keys
+                        switch (e.keyCode) {
+                            case 37:
+                            case 39:
+                            case 38:
+                            case 40: // Arrow keys
+                            case 32:
+                                e.preventDefault();
+                                break; // Space
+                            default:
+                                break; // do not block other keys
                         }
                     },
                     false);
             window.addEventListener('keyup',
-                    function(e){
+                    function (e) {
                         keys[e.keyCode] = false;
                     },
                     false);
         </script>
 
         <ul id="buttonList">
-            <li><a href="/store"><button class="btn btn-primary">Shop</button></a></li>
-            <li><a href="/leaders"><button class="btn btn-success">Leaderboard</button></a></li>
-            <li><a href="/signout"><button class="btn btn-danger">Logout</button></a></li>
+            <li><a href="/store">
+                    <button class="btn btn-primary">Shop</button>
+                </a></li>
+            <li><a href="/leaders">
+                    <button class="btn btn-success">Leaderboard</button>
+                </a></li>
+            <li><a href="/signout">
+                    <button class="btn btn-danger">Logout</button>
+                </a></li>
         </ul>
 
     </div>
