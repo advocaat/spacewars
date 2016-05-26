@@ -26,7 +26,7 @@ handleInput();
 enemyAdder();
 $(document).ready(function () {
 
-    socket = io('http://localhost:3000');
+    socket = io('https://spacewarsoffical.herokuapp.com/');
 
 });
 

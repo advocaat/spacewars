@@ -33,7 +33,7 @@
     score["name"] = name;
     score["level"] = level;
 
-    var socket = io('http://localhost:3000');
+    var socket = io('https://spacewarsoffical.herokuapp.com/');
     socket.emit("highscore", score);
 
     myTime.innerHTML = "<p>Moves: " + moves + "<br/>Time: " + time + "</p>";
