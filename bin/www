@@ -29,7 +29,7 @@ var server = http.createServer(app);
 
 var io = require('socket.io')(server);
 
-io.on('connection', function (socket) {
+io.once('connection', function (socket) {
 
     // Save the game state
     socket.on("gamesave", function (obj) {

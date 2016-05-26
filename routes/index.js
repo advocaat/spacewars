@@ -109,6 +109,8 @@ module.exports = function (passport) {
         failureRedirect: '/',
         failureFlash: true
 
+    }, function (req, res) {
+        Dao.saveGameState(req.user.username,{} ,[], 0,0,0);
     }));
 
     /* GET store. */
