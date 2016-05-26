@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var User = require('../models/User.js');
 var Ship = require('../models/Ship.js');
 var Score = require('../models/Score.js');
-mongoose.connect("mongodb://localhost/SpaceBase");
+mongoose.connect("mongodb://onetime:onetime@ds051665.mlab.com:51665/spacebase");
 functions = {};
 
 // Save the current game state
