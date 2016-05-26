@@ -193,7 +193,7 @@ function gameSave() {
     obj.playerCurrency = 25;
     obj.playerMoves = numMoves;
     obj.playerTime = document.getElementById('timer').childNodes[0].innerHTML;
-    console.log("Saving Game State");
+    console.log("Saving Game State" + JSON.stringify(obj));
     socket.emit("gamesave", obj);
 }
 

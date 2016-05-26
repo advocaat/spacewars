@@ -257,7 +257,7 @@ functions.insertUserShip = function (data) {
     ship.shipName = data.name;
     ship.shipPrice = data.price;
     ship.shipImage = "/images/" + data.name + ".jpg";
-    console.log("poop" + ship + data.name + data.price);
+    console.log("ship: " + ship + data.name + data.price);
     User.update({username: data.user}, {$push: {"ships": ship}}, function (err, data) {
 
         if (err) {
