@@ -10,7 +10,13 @@ functions = {};
 functions.saveGameState = function (username, playerPosition, enemyPositions, playerCurrency, playerMoves, playerTime) {
 
     GameState.findOne({"playerName" : username}, function (err, doc) {
-        doc.remove();
+
+        if (err) {
+            console.log(err);
+        } else {
+            doc.remove();
+        }
+
     });
     var playState = new GameState();
     playState.playerName = username;
