@@ -9,7 +9,7 @@ functions = {};
 // Save the current game state
 functions.saveGameState = function (username, playerPosition, enemyPositions, playerCurrency, playerMoves, playerTime) {
 
-    GameState.find({"playerName" : username}, function (err, doc) {
+    GameState.findOne({"playerName" : username}, function (err, doc) {
         doc.remove();
     });
     var playState = new GameState();
