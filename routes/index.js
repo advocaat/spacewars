@@ -34,6 +34,7 @@ module.exports = function (passport) {
     router.get('/game', isAuthenticated, function (req, res, next) {
 
         console.log("Logged in user: ", req.user.username);
+        Dao.saveGameState(req.user.username,{} ,[], 0,0,0);
         Dao.getUserInfos(req.user.username, function (data) {
 
             console.log("User ships: " + JSON.stringify(data.ships));
@@ -109,8 +110,6 @@ module.exports = function (passport) {
         failureRedirect: '/',
         failureFlash: true
 
-    }, function (req, res) {
-        Dao.saveGameState(req.user.username,{} ,[], 0,0,0);
     }));
 
     /* GET store. */
