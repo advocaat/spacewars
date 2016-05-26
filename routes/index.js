@@ -88,7 +88,7 @@ module.exports = function(passport) {
     router.get('/store', isAuthenticated,function (req, res) {
         
         Dao.getShipsAndUserDeets(req.user.username, function (deets) {
-            console.log(JSON.stringify(deets.ships))
+            console.log(JSON.stringify(deets.ships));
             res.render('shop', {allShips: deets.ships, user: deets.user});
         });
     });
@@ -102,7 +102,6 @@ module.exports = function(passport) {
         res.sendFile(path.resolve('../public/images/' + req.params.name));
 
     });
-
-
+    
 return router;
-}
+};

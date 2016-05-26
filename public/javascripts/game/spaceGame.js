@@ -93,7 +93,7 @@ function addSavedCube(cube, gameState){
     enemyCubes.push(cube);
 }
 function createBox(colee, ex, wi) {
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var geometry = new THREE.SphereGeometry(.7, 16, 16);
     var material = new THREE.MeshBasicMaterial({color: colee});
     if (colee == "invisible") {
         material = new THREE.MeshLambertMaterial({color: 0x900000, transparent: true, opacity: 0.0})
@@ -108,7 +108,7 @@ function createBox(colee, ex, wi) {
 
 
 function recreateBox(enemy){
-    var geometry = new THREE.BoxGeometry(1,1,1);
+    var geometry = new THREE.SphereGeometry(.7, 16, 16);
     var material = new  THREE.MeshBasicMaterial({color: enemy.color});
     var cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
