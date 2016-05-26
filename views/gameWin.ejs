@@ -32,7 +32,13 @@
     score["name"] = name;
     score["level"] = level;
 
-    var socket = io('https://spacewarsoffical.herokuapp.com/');
+    var socketAttached = false;
+
+    if (!socketAttached) {
+        var socket = io('https://spacewarsoffical.herokuapp.com/');
+        socketAttached = true;
+    }
+
     socket.emit("levelUp", {user: name});
     socket.emit("highscore", score);
 

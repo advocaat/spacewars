@@ -29,57 +29,51 @@ var server = http.createServer(app);
 
 var io = require('socket.io')(server);
 
-// io.on('connection', function (socket) {
-//
-//
-//
-// });
+io.on('connection', function (socket) {
 
-io.socket.on('connect', function () {
+    // Save the game state
+    socket.on("gamesave", function (obj) {
 
-});
+        console.log("Saving game state...");
+        DAO.updateGameState(obj.playerName, obj.playerPosition, obj.enemyPositions, obj.playerCurrency, obj.playerMoves, obj.playerTime);
 
-// Save the game state
-io.socket.on("gamesave", function (obj) {
-
-    console.log("Saving game state...");
-    DAO.updateGameState(obj.playerName, obj.playerPosition, obj.enemyPositions, obj.playerCurrency, obj.playerMoves, obj.playerTime);
-
-});
-
-// Load the game state
-io.socket.on("restart", function (playerName) {
-
-    console.log("Loading game state...");
-    DAO.getGameState(playerName, function (gameState) {
-        socket.emit("savedGame", gameState);
     });
 
-});
+    // Load the game state
+    socket.on("restart", function (playerName) {
 
-// When the user wins, update their level and currency
-io.socket.on("levelUp", function (user) {
+        console.log("Loading game state...");
+        DAO.getGameState(playerName, function (gameState) {
+            socket.emit("savedGame", gameState);
+        });
 
-    console.log("Logged in user: " + JSON.stringify(user));
-    DAO.updateUserLevel(user.user, 1);
-    DAO.updateBank(user.user, 20);
+    });
 
-});
+    // When the user wins, update their level and currency
+    socket.on("levelUp", function (user) {
 
-// Update the leaderboard with a new high-score
-io.socket.on("highscore", function (score) {
+        console.log("Logged in user: " + JSON.stringify(user));
+        DAO.updateUserLevel(user.user, 1);
+        DAO.updateBank(user.user, 20);
 
-    console.log("The player scored: " + score);
-    DAO.updateLeaderboard(score);
+    });
 
-});
+    // Update the leaderboard with a new high-score
+    socket.on("highscore", function (score) {
 
-// When a user purchases a new ship, add it to their account
-io.socket.on("newShip", function (data) {
+        console.log("The player scored: " + score);
+        DAO.updateLeaderboard(score);
 
-    console.log("Ship purchased: " + data);
-    DAO.insertUserShip(data);
-    DAO.updateBank(data.user, -data.price);
+    });
+
+    // When a user purchases a new ship, add it to their account
+    socket.on("newShip", function (data) {
+
+        console.log("Ship purchased: " + data);
+        DAO.insertUserShip(data);
+        DAO.updateBank(data.user, -data.price);
+
+    });
 
 });
 
