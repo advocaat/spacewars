@@ -13,7 +13,7 @@ functions.saveGameState = function (username, playerPosition, enemyPositions, pl
 
         if (err) {
             console.log(err);
-        } else {
+        } else if (doc) {
             doc.remove();
         }
 
